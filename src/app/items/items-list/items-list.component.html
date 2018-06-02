@@ -1,0 +1,32 @@
+<h1>ICNEF SUBSCRIBERS</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Profession</th>
+      <th>Home Phone</th>
+      <th>Zip</th>
+      <th>Membership Class</th>
+      <th>Membership Status</th>
+    </tr>
+  </thead>
+  <tbody *ngFor="let item of items | async">
+    <td>{{item.title}} {{item.first_name}}</td>
+    <td>{{item.last_name}}</td>
+    <td>{{item.email_id}}</td>
+    <td>{{item.profession}}</td>
+    <td>{{item.home_phone}}</td>
+    <td>{{item.zip}}</td>
+    <td>{{item.membership_class}}</td>
+    <td *ngIf="item.is_active_member == 'true'">Active</td>
+    <td *ngIf="item.is_active_member == 'false'">Inactive</td>
+    <td *ngIf="!item.is_active_member"></td>
+  </tbody>
+</table>
+<loading-spinner *ngIf="showSpinner"></loading-spinner>
+
+<button type="button" class="button is-danger" (click)='deleteItems()'>Delete Entire List</button>
+
+<hr>
